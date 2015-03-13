@@ -1,0 +1,62 @@
+:q|
+
+    :q
+package Profesores;
+
+import Base.*;
+import Equipo.*;
+import Profesores.*;
+import Base.Conexion;
+import java.sql.*;
+import java.util.ArrayList;
+import Profesores.Profesor;
+
+public class GestionProfesor {
+
+    public void noSe(Profesor prof) {
+
+        System.err.println(prof.getApellidomaterno());
+
+    }
+
+    public void insertarProfesor(Profesor profesor) {
+        Conexion con = new Conexion();
+        con.Conectar();
+
+        try {
+            Statement estatuto = con.getConnection().createStatement();
+            estatuto.executeUpdate("INSERT INTO hash_inventario.profesores (nombre, apellido_paterno, apellido_materno, numero_empleado, correo_electronico, curp, rfc, id, tiempo) VALUES ('" + profesor.getNombre() + "', '" + profesor.getApellidopaterno() + "', '" + profesor.getApellidomaterno() + "', '" + profesor.getNumempleado() + "', '" + profesor.getCorreoelectronico() + "', '" + profesor.getCurp() + "', '" + profesor.getRfc() + "', NULL, CURRENT_TIMESTAMP )");
+            estatuto.close();
+            con.desconectar();
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    public String buscaNombreProfesor(String busqueda){
+        Conexion con = new Conexion();
+        con.Conectar();
+
+        try {
+            Statement estatuto = con.getConnection().createStatement();
+            ResultSet rs = estatuto.executeQuery("SELECT * FROM profesores WHERE `nombre` LIKE '%"+busqueda+"%'");
+            
+            estatuto.close();
+            con.desconectar();
+            while(rs.next()){
+                
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+       
+    }
+
+
+}
