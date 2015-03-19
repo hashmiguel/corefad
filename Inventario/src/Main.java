@@ -34,11 +34,12 @@ public class Main {
 	       System.out.println(c2.getMinimalDaysInFirstWeek() );
 		System.out.println("Esto es una prueba de compilación con ANT");
 		GestionProfesor gs = new GestionProfesor();
-                
-               // gs.insertarProfesor(eq);
+          //      gs.insertarProfesor(eq);
+                //gs.borraProfesorNumEmpleado(301);
+                // gs.insertarProfesor(eq);
 //                gs.borraProfesor(eq.getNumempleado());
                
-                    gs.buscaNombreProfesor("Luis");
+                   gs.buscaNombreProfesor("Luis");
     }
 
 

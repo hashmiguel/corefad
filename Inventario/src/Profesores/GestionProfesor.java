@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import Profesores.Profesor;
 
-public class GestionProfesor {
+public class GestionProfesor<E> {
 
     public void noSe(Profesor prof) {
 
@@ -16,6 +16,10 @@ public class GestionProfesor {
 
     }
 
+    /**
+     *
+     * @param profesor
+     */
     public void insertarProfesor(Profesor profesor) {
         Conexion con = new Conexion();
         con.Conectar();
@@ -33,44 +37,51 @@ public class GestionProfesor {
         }
     }
 
+    /**
+     *
+     * @param busqueda
+     */
     public void buscaNombreProfesor(String busqueda) {
         Conexion con = new Conexion();
         con.Conectar();
 
         try {
             Statement estatuto = con.getConnection().createStatement();
-            
-            ResultSet  fila = estatuto.executeQuery("SELECT COUNT(*) FROM `profesores` WHERE `nombre` LIKE '%"+ busqueda + "%'");
-            ResultSet  columna= estatuto.executeQuery("SELECT * FROM profesores WHERE `nombre` LIKE '%" + busqueda + "%'");
+
+            ResultSet fila = estatuto.executeQuery("SELECT COUNT(*) FROM `profesores` WHERE `nombre` LIKE '%" + busqueda + "%'");
+            ResultSet columna = estatuto.executeQuery("SELECT * FROM profesores WHERE `nombre` LIKE '%" + busqueda + "%'");
             ResultSet rs = estatuto.executeQuery("SELECT * FROM profesores WHERE `nombre` LIKE '%" + busqueda + "%'");
-            int foo = Integer.parseInt(fila.toString());
-           //System.out.println(foo);
-           //fila.toString();
-           // while(fila.)
-                    
-           System.out.println(rs.next());
+            //int foo = Integer.parseInt(fila.toString());
+            //System.out.println(foo);
+            //fila.toString();
             while (rs.next()) {
-                
-//                for(int i=0;i<=fila ;i++){
-//                    
-//                 System.out.print()   
-//                }
-                String nombre = rs.getString(1);
-                System.out.print(nombre + " ");
-
-                String apellidoMaterno = rs.getString(2);
-                System.out.print(apellidoMaterno + " ");
-
-                String apellidoPaterno = rs.getString(3);
-                System.out.print(apellidoPaterno + " ");
-
-                String numeroEmpleado = rs.getString(4);
-                System.out.print(numeroEmpleado + " ");
-                
-                System.out.println();
-                
+                String uno = rs.getNString(0);
+                System.out.print(uno + " ");
             }
-             estatuto.close();
+
+                        //System.out.println(rs.next());
+//            while (rs.next()) {
+//
+////                for(int i=0;i<=fila ;i++){
+////                    
+////                 System.out.print()   
+////                }
+//                String nombre = rs.getString(1);
+//                System.out.print(nombre + " ");
+//
+//                String apellidoMaterno = rs.getString(2);
+//                System.out.print(apellidoMaterno + " ");
+//
+//                String apellidoPaterno = rs.getString(3);
+//                System.out.print(apellidoPaterno + " ");
+//
+//                String numeroEmpleado = rs.getString(4);
+//                System.out.print(numeroEmpleado + " ");
+//
+//                System.out.println();
+//
+//            }
+            estatuto.close();
             con.desconectar();
 
         } catch (SQLException e) {
@@ -79,10 +90,40 @@ public class GestionProfesor {
             System.out.println(e);
         }
 
-        
     }
 
-    public void borraProfesor(int numempleado) {
+    /**
+     *
+     * @param nombre
+     */
+    public void borraProfesorRfc(String rfc) {
+        Conexion con = new Conexion();
+        con.Conectar();
+
+        try {
+
+            Statement estatuto = con.getConnection().createStatement();
+            estatuto.executeUpdate("DELETE FROM hash_inventario.profesores WHERE profesores.rfc = " + rfc);
+            estatuto.close();
+            con.desconectar();
+
+        } catch (SQLException e) {
+
+            System.out.println(e);
+
+        } catch (Exception e) {
+
+            System.out.println(e);
+
+        }
+
+    }
+
+    /**
+     *
+     * @param numempleado
+     */
+    public void borraProfesorNumEmpleado(int numempleado) {
 
         Conexion con = new Conexion();
         con.Conectar();
@@ -90,7 +131,30 @@ public class GestionProfesor {
         try {
 
             Statement estatuto = con.getConnection().createStatement();
-            estatuto.executeUpdate("DELETE FROM hash_inventario.profesores WHERE profesores.numero_empleado = "+numempleado);
+            estatuto.executeUpdate("DELETE FROM hash_inventario.profesores WHERE profesores.numero_empleado = " + numempleado);
+            estatuto.close();
+            con.desconectar();
+
+        } catch (SQLException e) {
+
+            System.out.println(e);
+
+        } catch (Exception e) {
+
+            System.out.println(e);
+
+        }
+
+    }
+
+    public void borrarProfesorId(String id) {
+        Conexion con = new Conexion();
+        con.Conectar();
+
+        try {
+
+            Statement estatuto = con.getConnection().createStatement();
+            estatuto.executeUpdate("DELETE FROM hash_inventario.profesores WHERE profesores.id = " + id);
             estatuto.close();
             con.desconectar();
 
