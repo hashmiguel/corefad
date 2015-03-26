@@ -41,10 +41,15 @@ public class GestionProfesor<E> {
      *
      * @param busqueda
      */
+//    private int filaNumero(){
+//        
+//    }
+    
+    
     public void buscaNombreProfesor(String busqueda) {
         Conexion con = new Conexion();
         con.Conectar();
-
+        int TOTAL = 0;
         try {
             Statement estatuto = con.getConnection().createStatement();
 
@@ -52,12 +57,17 @@ public class GestionProfesor<E> {
             ResultSet columna = estatuto.executeQuery("SELECT * FROM profesores WHERE `nombre` LIKE '%" + busqueda + "%'");
             ResultSet rs = estatuto.executeQuery("SELECT * FROM profesores WHERE `nombre` LIKE '%" + busqueda + "%'");
             //int foo = Integer.parseInt(fila.toString());
+            fila.toString();
             //System.out.println(foo);
-            //fila.toString();
-            while (rs.next()) {
-                String uno = rs.getNString(0);
+           
+            while (fila.next()) {
+                String uno = rs.getString(10);
                 System.out.print(uno + " ");
+                  
+                
             }
+            
+            
 
                         //System.out.println(rs.next());
 //            while (rs.next()) {
