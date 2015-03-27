@@ -40,6 +40,7 @@ public class Main {
 //                gs.borraProfesor(eq.getNumempleado());
                
                    gs.buscaNombreProfesor("Luis");
+                   System.out.println(gs.tamanoFila("Monse"));
     }
 
 
