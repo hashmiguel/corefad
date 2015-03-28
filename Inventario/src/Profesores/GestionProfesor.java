@@ -46,6 +46,33 @@ public class GestionProfesor<E> {
 //    private int filaNumero(){
 //        
 //    }
+    public int tamanoColumnas() {
+        Conexion con = new Conexion();
+        con.Conectar();
+        int i=0;
+        try {
+            
+            Statement estatuto = con.getConnection().createStatement();
+            ResultSet rs = estatuto.executeQuery("SELECT count(*) FROM information_schema.`COLUMNS` C WHERE table_name = 'profesores' AND TABLE_SCHEMA = 'hash_inventario'");
+
+            while (rs.next()) {
+                String uno = rs.getString(1);
+                i = Integer.parseInt(uno);
+                //Integer.parseInt(enteroString);
+            }
+            estatuto.close();
+            con.desconectar();
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+            return i;
+    }
+    
+    
+
     public int tamanoFila(String busqueda) {
         Conexion con = new Conexion();
         con.Conectar();
@@ -57,7 +84,7 @@ public class GestionProfesor<E> {
 
             while (rs.next()) {
                 String uno = rs.getString(1);
-                this.numfila = Integer.parseInt(uno);
+                i = Integer.parseInt(uno);
                 //Integer.parseInt(enteroString);
 
             }
@@ -70,7 +97,7 @@ public class GestionProfesor<E> {
         } catch (Exception e) {
             System.out.println(e);
         }
-        return this.numfila;
+        return i;
         //System.out.println(i);
     }
 
@@ -83,16 +110,14 @@ public class GestionProfesor<E> {
 
             ResultSet columna = estatuto.executeQuery("SELECT * FROM profesores WHERE `nombre` LIKE '%" + busqueda + "%'");
             ResultSet rs = estatuto.executeQuery("SELECT * FROM profesores WHERE `nombre` LIKE '%" + busqueda + "%'");
-            //int foo = Integer.parseInt(fila.toString());
-
-            //System.out.println(foo);
-            // System.out.println(rs.getFetchSize());
-            for (int i = 0; i >= tamanoFila(busqueda); i++) {
+            
+            //for (int i = 0; i >= tamanoColumnas(); i++) {
                 while (rs.next()) {
-                    String uno = rs.getString(i);
-                    System.out.print(uno + " ");
+                    String uno = rs.getString(1);
+                    System.out.println(uno + " ");
+                  //  i++;
 
-                }
+            //    }
             }
 //            System.out.println(tamanoFila(busqueda));
 
