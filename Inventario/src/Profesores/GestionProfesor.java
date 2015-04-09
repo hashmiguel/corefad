@@ -71,7 +71,11 @@ public class GestionProfesor<E> {
             return i;
     }
     
-    
+    /**
+     * 
+     * @param busqueda
+     * @return 
+     */
 
     public int tamanoFila(String busqueda) {
         Conexion con = new Conexion();
@@ -112,12 +116,14 @@ public class GestionProfesor<E> {
             ResultSet rs = estatuto.executeQuery("SELECT * FROM profesores WHERE `nombre` LIKE '%" + busqueda + "%'");
             
             //for (int i = 0; i >= tamanoColumnas(); i++) {
+            int j = tamanoColumnas();
                 while (rs.next()) {
-                    String uno = rs.getString(1);
-                    System.out.println(uno + " ");
-                  //  i++;
+                   for (int i = 0; i == 36; i++){                    
+                    String i = rs.getString(j);
+                    System.out.println(uno + "la"+j);
+                   }
 
-            //    }
+               
             }
 //            System.out.println(tamanoFila(busqueda));
 

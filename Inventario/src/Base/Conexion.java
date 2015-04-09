@@ -33,7 +33,7 @@ public class Conexion {
            // estatuto.executeUpdate("INSERT INTO hash_inventario.profesores (nombre, apellido_paterno, apellido_materno, numero_empleado, correo_electronico, curp, rfc, id, tiempo) VALUES ('nombre', 'apellido_paterno', 'apellido_materno', 6, correo_electronico, curp, rfc,  NULL, CURRENT_TIMESTAMP)");
            // estatuto.executeUpdate("INSERT INTO hash_inventario.profesores (nombre, apellido_paterno, apellido_materno, numero_empleado, correo_electronico, curp, rfc, id, tiempo) VALUES ("+this.nombre+", "+this.apellidopaterno+", "+this.apellidomaterno+", "+this.numempleado+", "+this.correoelectronico+", "+this.curp+", "+this.rfc+",  NULL, CURRENT_TIMESTAMP)" );
            // estatuto.executeUpdate(ls); 
-                System.out.println("Conexión a base de datos " + database + " ...OK\n");
+                //System.out.println("Conexión a base de datos " + database + " ...OK\n");
 //                Statement nose = conexion.createStatement();
 //                Statement nose2 = conexion.createStatement();
 //                ResultSet rs = nose.executeQuery("SELECT * FROM profesores LIMIT 0 , 30");

@@ -32,7 +32,7 @@ public class Main {
        System.out.println("Fecha actual: "+c1.getTime().toLocaleString());
        	System.out.println(c1.getFirstDayOfWeek());
 	       System.out.println(c2.getMinimalDaysInFirstWeek() );
-		System.out.println("Esto es una prueba de compilación con ANT");
+		//System.out.println("Esto es una prueba de compilación con ANT");
 		GestionProfesor gs = new GestionProfesor();
           //      gs.insertarProfesor(eq);
                 //gs.borraProfesorNumEmpleado(301);
@@ -40,7 +40,8 @@ public class Main {
 //                gs.borraProfesor(eq.getNumempleado());
                
                    gs.buscaNombreProfesor("Luis");
-                   System.out.println(gs.tamanoColumnas());
+                  // System.out.println(gs.tamanoColumnas());
+                  // System.out.println(gs.tamanoFila("Luis"));
                    //System.out.println(gs.tamanoFila("Luis"));
     }
 
